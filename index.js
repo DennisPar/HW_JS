@@ -1,114 +1,96 @@
-//Task 1
-for (let i = 1; i < 11; i++) {
-    
-    if (i % 3 == 0) 
-        console.log('FizBuz')
-    
-    else if (i % 2 == 0)
-        console.log('Fiz')
 
-    else if (i % 2 !== 0)
-        console.log('Buz')
+
+// //Task 1
+const citiesAndCountries = {
+	'Киев': 'Украина',
+	'Нью-Йорк': 'США',
+	'Амстердам': 'Нидерланды',
+	'Берлин': 'Германия',
+	'Париж': 'Франция',
+	'Лиссабон': 'Португалия',
+	'Вена': 'Австрия',
+};
+
+const result = []
+
+for (let key in citiesAndCountries) {
+//    console.log(key, '-это', citiesAndCountries[key])
+    // result.push(`${key} -это ${citiesAndCountries[key]}`)
+
+    const s = key + ' -это '  + citiesAndCountries[key]
+    result.push(s)
+}
+
+console.log(result)
+
+// //Task 2
+function getArray() {
+
+
+    const amount = 9;
+    const resultArr = []
+    let k = 1;
+     for (let i = 0; i <amount/3; i++) {
+        resultArr[i] = [];              
+         for (let j = 0; j <3 ; j++) {
+             resultArr[i][j] = k;
+             if(amount%3 ==0)
+            k++;
+        } 
+    }
+    
+    return resultArr
     
 }
-   
- //Task 2
-function factorial(n, result){
-    result = result || 1;
-    if(!n){
-        return result;
-    }else{
-        return factorial(n-1, result*n);
-    }
-}
-const factorialResult = factorial(10);
-console.log(factorialResult)
+console.log(getArray())
 
 
 //Task 3
 
-// const sheetsInReamPaper = 500;
-// const consumptionPerWeek = 1200;
-// const weeksAmount = 8;
-// const roughResult = ((consumptionPerWeek / sheetsInReamPaper) * weeksAmount)
-// const roundedResult = Math.ceil(roughResult)
-// console.log(roundedResult)
+const namesOfDays = {
+    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    en: ['Monday', 'Tuesday', 'Wednesday','Thirday','Friday','Saturday', 'Sunday'],
+}
 
+function getNameOfDay(){
+    const lang = 'en';
+    const day = 3;
+    
+    const daysLocalized = namesOfDays[lang]
+    return daysLocalized[day-1]
+}
+console.log(getNameOfDay())
 
-const sheetsInReamPaper = 500;
-const consumptionPerWeek = 1200;
-const weeksAmount = 8;
-const allConsumption = (consumptionPerWeek * weeksAmount);
-const roughResult = (allConsumption % sheetsInReamPaper);
-const roundedResult = (((allConsumption - roughResult) / sheetsInReamPaper) + 1);
-console.log(roundedResult)
 
 
 // Task 4
 
-// function findFlat(roomNumber) {
-//     const roomsOnFloor = 3;
-//     const floors = 9;
-//     const findEntrance = Math.ceil(roomNumber / (floors * roomsOnFloor));
-//     const findFloor = Math.ceil((roomNumber % (floors * roomsOnFloor)) / roomsOnFloor);
-//     return 'подьезд' + ' ' + findEntrance + ' ' + 'Этаж' + ' ' + findFloor
-// }
-// const result = findFlat(357)
-// console.log(result)
-
-const ROOMS_ON_FLOOF = 3;
-const FLOORS = 9;
-
-function findFlanAndEntrance(roomNumber) {
-    const roomCount = (ROOMS_ON_FLOOF * FLOORS);
-    const entanceFindInProgress = (roomNumber % roomCount);
-    const entrance = (((roomNumber - entanceFindInProgress) / roomCount) + 1);
-    const flat = findFlat(entanceFindInProgress)
-    return {entrance, flat}
-}
-
-function findFlat(entranceFindInProgress) {
-    if ((entranceFindInProgress % ROOMS_ON_FLOOF) === 0) {
-        return (entranceFindInProgress / ROOMS_ON_FLOOF);
-    } else {
-        return (((entranceFindInProgress - (entranceFindInProgress % ROOMS_ON_FLOOF)) / ROOMS_ON_FLOOF) + 1);
-    }
-}
-
-const {entrance, flat} = findFlanAndEntrance(275);
-console.log(entrance, flat)
-
-
-//Task 5
-
-let num = 6;
-for (let i = 1; i <= num; i++){
-    let str = '';
-    for (j = 1; j <= 2 * num - 1; j++) {
-        if (j >= num - (i - 1) && j <= num + (i - 1)) {
-            str += '#';
-        } else {
-            str += '-'
-        }
-    }
-        console.log(str)
-    }
-
-
-
-let n = 8;
-for (let i = 1; i <= n; i++){
-    let str = '';
-    for (j = 1; j <= 2 * n - 1; j++) {
-        if (j >= n - (i - 1) && j <= n + (i - 1)) {
-            str += '#';
-        } else {
-            str += '-'
-        }
-    }
-        console.log(str)
-    }
+const numbersArr = [240, 10, 5, 25,]
+ 
+function find2MinElements (numbersArr) {
+    let minElement1 = numbersArr[0],
+         minElement2 = numbersArr[1],
+         resultArray = new Array();
     
-
-
+    for ( i = 0; i <= numbersArr.length; i++)
+      { 
+          if (numbersArr[i] < minElement1) {
+              if (minElement2 > numbersArr[i] ) {
+                minElement2 = numbersArr[i];
+              } else {
+                minElement1 = numbersArr[i];                  
+              }
+          }
+      }
+      
+    resultArray[0] = minElement1;
+    resultArray[1] = minElement2;
     
+    return minElement1+minElement2
+  } 
+ 
+console.log( find2MinElements(numbersArr));
+
+
+
+
