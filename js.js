@@ -22,7 +22,7 @@ const getArr = () => {
     } else {
       arr.push(obj);
     }
-    return arr;
+    return [...arr];
   };
 };
 const getNewArr = getArr();
@@ -39,8 +39,6 @@ const getTimeLikeABoss = () => {
   return () => {
     if (!time) {
       time = new Date().getTime();
-    }
-    if (new Date().getTime() - time < 1) {
       return "Enabled";
     }
     return (new Date().getTime() - time) / 1000;
